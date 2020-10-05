@@ -16,7 +16,7 @@
   /* font-family: 'Source Sans Pro', sans-serif; */
   outline: 0;
   resize: none;
-  height: 2em;
+  height: 3em;
 }
 
 .new-tweet footer {
@@ -30,4 +30,11 @@
 .new-tweet button {
   background-color: #4056A1;  
   color: #FFFFFF;
+  border: none;
+  border-radius: 3px;
+}
+
+.new-tweet button:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
 }
