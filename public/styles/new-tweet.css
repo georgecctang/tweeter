@@ -17,6 +17,7 @@
   outline: 0;
   resize: none;
   height: 3em;
+  font-size: 0.9em;
 }
 
 .new-tweet footer {
@@ -37,4 +38,8 @@
 .new-tweet button:hover {
   cursor: pointer;
   filter: brightness(0.8);
+}
+
+.over-limit {
+  color: red;
 }

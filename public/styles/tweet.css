@@ -1,0 +1,82 @@
+/* article container */
+
+article.tweet {
+  box-sizing: border-box;
+  height: 300px;
+  width: 100%;
+  border: 2px solid #545149;
+  margin-top: 40px;
+  padding: 1em;
+  opacity: 0.6;
+}
+
+article.tweet:hover {
+  opacity: 1;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Header */
+
+article.tweet header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+article.tweet .header-inner-container {
+  display: flex;
+  align-items: center;
+}
+
+article.tweet .profile-pic {
+  font-size: 2em;
+  margin-right: 0.5em;
+}
+
+article.tweet header .username {
+  color: gray;
+  visibility: hidden;
+}
+
+article.tweet:hover .username {
+  visibility: visible;
+}
+
+/* tweet text and hr */ 
+article.tweet p {
+  text-align: justify;
+  padding: 10px 10px;
+}
+
+hr {
+border:solid 1px #545149;
+width: 100%;
+/* color: #FFFF00; */
+height: 0;
+}
+
+/* Footer */
+
+article.tweet footer {
+  /* border: 2px solid red; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  /* padding: 5px; */
+  /* border-top: 2px solid #545149; */
+}
+
+article.tweet .footer-inner-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+article.tweet .footer-date, .footer-icon {
+  font-size: 0.6em;
+  margin: 8px;
+}

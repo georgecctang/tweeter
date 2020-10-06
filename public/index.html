@@ -10,11 +10,15 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
 
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
     
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -36,7 +40,7 @@
       <div>
           <h2>Your Name</h2>
       </div>
-  </header>
+    </header>
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
@@ -50,6 +54,37 @@
           </footer>
         </form>
       </section>
+      <article class="tweet">
+        <header>
+          <div class="header-inner-container">
+            <i class="far fa-user profile-pic"></i>
+            <span>Newton</span>
+          </div>
+          <div class="header-inner-container">
+            <span class="username">&#64;SirIssac</span>
+          </div>
+        </header>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nulla, eos, quibusdam quod eius placeat officiis dolore recusandae sapien</p>
+        <hr>     
+        <footer>
+          <div class="footer-inner-container">
+            <span class="footer-date">10 days ago</span>
+          </div>
+          <div class="footer-inner-container">
+            <i class="fas fa-flag footer-icon"></i>
+            <i class="fas fa-retweet footer-icon"></i>
+            <i class="fas fa-heart footer-icon"></i>
+          </div>
+        </footer>
+      </article>
     </main>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script src="../scripts/composer-char-counter.js"></script>
   </body>
 </html>
