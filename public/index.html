@@ -24,7 +24,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
+
+
   </head>
 
   <body>
@@ -42,7 +43,7 @@
       </div>
     </header>
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main class="main-container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form method="POST" action="/tweets">
@@ -54,29 +55,9 @@
           </footer>
         </form>
       </section>
-      <article class="tweet">
-        <header>
-          <div class="header-inner-container">
-            <i class="far fa-user profile-pic"></i>
-            <span>Newton</span>
-          </div>
-          <div class="header-inner-container">
-            <span class="username">&#64;SirIssac</span>
-          </div>
-        </header>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nulla, eos, quibusdam quod eius placeat officiis dolore recusandae sapien</p>
-        <hr>     
-        <footer>
-          <div class="footer-inner-container">
-            <span class="footer-date">10 days ago</span>
-          </div>
-          <div class="footer-inner-container">
-            <i class="fas fa-flag footer-icon"></i>
-            <i class="fas fa-retweet footer-icon"></i>
-            <i class="fas fa-heart footer-icon"></i>
-          </div>
-        </footer>
-      </article>
+      <section id="tweet-container" style="border: 2px red dashed">
+      </section>
+
     </main>
     <br>
     <br>
@@ -85,6 +66,34 @@
     <br>
     <br>
     <br>
-    <script src="../scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="./scripts/client.js"></script>
+    <script src="./scripts/composer-char-counter.js"></script>
   </body>
+
 </html>
+
+<!-- 
+<article class="tweet">
+  <header>
+    <div class="header-inner-container">
+      <img src=https://i.imgur.com/nlhLi3I.png" class="profile-pic">
+      <i class="far fa-user profile-pic"></i> "username">&#64;SirIssac</span>
+    </div>
+  </header>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nulla, eos, quibusdam quod eius placeat officiis dolore recusandae sapien</p>
+  <hr>     
+  <footer>
+    <div class="footer-inner-container">
+      <span class="footer-date">10 days ago</span>
+    </div>
+    <div class="footer-inner-container">
+      <i class="fas fa-flag footer-icon"></i>
+      <i class="fas fa-r
+      <span>Newton</span>
+    </div>
+    <div class="header-inner-container">
+      <span class=etweet footer-icon"></i>
+      <i class="fas fa-heart footer-icon"></i>
+    </div>
+  </footer>
+</article> -->

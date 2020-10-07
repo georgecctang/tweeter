@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log('document ready...');
   $(".new-tweet textarea").on('keyup', function() {
     
     // Traverse through the DOM to get the counter element
