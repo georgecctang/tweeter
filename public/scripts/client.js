@@ -7,36 +7,39 @@
 
 // Create tweet element based on data fetched from server
 
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
+// // Fake data taken from initial-tweets.json
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//       ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ]
 
 // Populate #tweet-container with tweet data
 const renderTweets = function(tweets) {
 
-  tweets.forEach(tweet => {
+  // Empty container first
+  $("#tweet-container").empty();
+  // reverse to place newest tweet on top
+  tweets.reverse().forEach(tweet => {
     let tweetArticle = createTweetElement(tweet);
     $("#tweet-container").append(tweetArticle);
    });
@@ -57,7 +60,7 @@ const createTweetElement = function(tweet) {
     datetimeUnit = datetimeDisplay > 1 ? 'days' : 'day';
   } else if (diffMS/(1000 * 60 * 60) >= 1) {
     datetimeDisplay = Math.floor(diffMS/(1000 * 60 * 60));
-    datetimeUnit = 'hour';
+    datetimeUnit = datetimeDisplay > 1 ? 'hours' : 'hour';
   } else if (diffMS/(1000 * 60) >= 1) {
     datetimeDisplay = Math.floor(diffMS/(1000 * 60));
     datetimeUnit = datetimeDisplay > 1 ? 'minutes' : 'minute';
@@ -92,4 +95,24 @@ const createTweetElement = function(tweet) {
   return $tweet;
 };
 
-renderTweets(data);
+// renderTweets(data);
+
+
+$("form").submit(function(event){
+	event.preventDefault(); //prevent default action 
+	let form_data = $(this).serialize(); //Encode form elements for submission
+  
+	$.ajax({
+		url : "/tweets",
+		method: "POST",
+		data : form_data
+	}).done(res => console.log(res));//renderTweets(res));
+});
+
+$("document").ready(function() {
+  // console.log('tweet-continer loaded');
+  $.ajax({
+    url: "/tweets",
+    method: "GET",
+  }).done(res => renderTweets(res));
+});
