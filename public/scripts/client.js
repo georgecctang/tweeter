@@ -5,34 +5,6 @@
  */
 
 
-// Create tweet element based on data fetched from server
-
-// // Fake data taken from initial-tweets.json
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
-
 // Populate #tweet-container with tweet data
 const renderTweets = function(tweets) {
 
@@ -41,9 +13,16 @@ const renderTweets = function(tweets) {
   // reverse to place newest tweet on top
   tweets.reverse().forEach(tweet => {
     let tweetArticle = createTweetElement(tweet);
-    $("#tweet-container").append(tweetArticle);
+    $("#tweet-container").append($(tweetArticle));
    });
 };
+
+// Prevent XSS
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 // Create tweet article element based on tweet data fetched from server
 const createTweetElement = function(tweet) {
@@ -70,6 +49,10 @@ const createTweetElement = function(tweet) {
   }
 
   // create $tweet element
+  let example = `
+  <div>
+  </div>
+  `;
   let $tweet = `<article class="tweet">`;
   $tweet += `<header>`;
   $tweet += `<div class="header-inner-container">`
@@ -80,7 +63,7 @@ const createTweetElement = function(tweet) {
   $tweet += `<span class="username">${handle}</span>`;
   $tweet += `</div>`;
   $tweet += `</header>`;
-  $tweet += `<p>${text}<p>`;
+  $tweet += `<p>${escape(text)}<p>`;
   $tweet += `<hr>`;
   $tweet += `<footer>`;
   $tweet += `<div class="footer-inner-container">`;
@@ -94,7 +77,6 @@ const createTweetElement = function(tweet) {
 
   return $tweet;
 };
-
 
 // Handle new tweet submission
 $("form").submit(function(event){
@@ -123,7 +105,6 @@ $("form").submit(function(event){
   }).done(fetchTweets)
   .done(this.reset());
 });
-
 
 const fetchTweets = function() {
   $.ajax({
