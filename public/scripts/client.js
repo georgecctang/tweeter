@@ -95,24 +95,42 @@ const createTweetElement = function(tweet) {
   return $tweet;
 };
 
-// renderTweets(data);
 
-
+// Handle new tweet submission
 $("form").submit(function(event){
-	event.preventDefault(); //prevent default action 
-	let form_data = $(this).serialize(); //Encode form elements for submission
+
+  // form validation
+  // Empty string
+  if (!this.text.value) {
+    alert("Please enter some text."); 
+    return false;
+  } 
+  // string longer than 140 chars
+  if (this.text.value.length > 140) {
+    alert("Limit is 140; please shorten your text.");
+    return false;
+  }
+  // prevent default action
+  event.preventDefault(); 
+
+  //Encode form elements for submission
+  let form_data = $(this).serialize(); 
   
 	$.ajax({
 		url : "/tweets",
 		method: "POST",
 		data : form_data
-	}).done(res => console.log(res));//renderTweets(res));
+  }).done(fetchTweets)
+  .done(this.reset());
 });
 
-$("document").ready(function() {
-  // console.log('tweet-continer loaded');
+
+const fetchTweets = function() {
   $.ajax({
     url: "/tweets",
     method: "GET",
   }).done(res => renderTweets(res));
-});
+};
+
+// Fetch data on load
+$("document").ready(fetchTweets);
