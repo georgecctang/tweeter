@@ -4,6 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// import * as timeago from 'timeago.js';
 
 // Populate #tweet-container with tweet data
 const renderTweets = function(tweets) {
@@ -29,54 +30,58 @@ const createTweetElement = function(tweet) {
   let { user: { name, avatars, handle }, content: { text }, created_at } = tweet;
   
   // Calcuate date time difference and generate correct display
-  let diffMS = new Date() - created_at;
-  let datetimeDisplay, datetimeUnit;
-  if (diffMS/(1000 * 365 * 24 * 60 * 60) >= 1) {
-    datetimeDisplay = Math.floor(diffMS/(1000 * 365 * 24 * 60 * 60));
-    datetimeUnit = datetimeDisplay > 1 ? 'years' : 'year';
-  } else if (diffMS/(1000 * 24 * 60 * 60) >= 1) {
-    datetimeDisplay = Math.floor(diffMS/(1000 * 24 * 60 * 60));
-    datetimeUnit = datetimeDisplay > 1 ? 'days' : 'day';
-  } else if (diffMS/(1000 * 60 * 60) >= 1) {
-    datetimeDisplay = Math.floor(diffMS/(1000 * 60 * 60));
-    datetimeUnit = datetimeDisplay > 1 ? 'hours' : 'hour';
-  } else if (diffMS/(1000 * 60) >= 1) {
-    datetimeDisplay = Math.floor(diffMS/(1000 * 60));
-    datetimeUnit = datetimeDisplay > 1 ? 'minutes' : 'minute';
-  } else {
-    datetimeDisplay = Math.floor(diffMS/(1000));
-    datetimeUnit = datetimeDisplay > 1? 'seconds' : 'seconds';
-  }
+  // let diffMS = new Date() - created_at;
+  // let datetimeDisplay, datetimeUnit;
+  // if (diffMS/(1000 * 365 * 24 * 60 * 60) >= 1) {
+  //   datetimeDisplay = Math.floor(diffMS/(1000 * 365 * 24 * 60 * 60));
+  //   datetimeUnit = datetimeDisplay > 1 ? 'years' : 'year';
+  // } else if (diffMS/(1000 * 24 * 60 * 60) >= 1) {
+  //   datetimeDisplay = Math.floor(diffMS/(1000 * 24 * 60 * 60));
+  //   datetimeUnit = datetimeDisplay > 1 ? 'days' : 'day';
+  // } else if (diffMS/(1000 * 60 * 60) >= 1) {
+  //   datetimeDisplay = Math.floor(diffMS/(1000 * 60 * 60));
+  //   datetimeUnit = datetimeDisplay > 1 ? 'hours' : 'hour';
+  // } else if (diffMS/(1000 * 60) >= 1) {
+  //   datetimeDisplay = Math.floor(diffMS/(1000 * 60));
+  //   datetimeUnit = datetimeDisplay > 1 ? 'minutes' : 'minute';
+  // } else {
+  //   datetimeDisplay = Math.floor(diffMS/(1000));
+  //   datetimeUnit = datetimeDisplay > 1? 'seconds' : 'seconds';
+  // }
 
   // create $tweet element
-  let example = `
-  <div>
-  </div>
+ 
+  let datetimeInfo = calculateTimeAgo(created_at);
+
+  let $tweet = 
+  `
+    <article class="tweet">
+      <header>
+        <div class="header-inner-container">
+          <img class="profile-pic" src=${avatars} alt="Profile Picture">
+          <span>${name}</span>
+        </div>
+          <div class="header-inner-container">
+          <span class="username">${handle}</span>
+        </div>
+      </header>
+      <p>${escape(text)}<p>
+      <hr>
+      <footer>
+        <div class="footer-inner-container">
+        <span class="footer-date">Created ${datetimeInfo[0]} ${datetimeInfo[1]} ago</span>
+      </div>
+      <div class="footer-inner-container">
+        <i class="fas fa-flag footer-icon"></i>
+        <i class="fas fa-retweet footer-icon"></i>
+        <i class="fas fa-heart footer-icon"></i>
+      </div>
   `;
-  let $tweet = `<article class="tweet">`;
-  $tweet += `<header>`;
-  $tweet += `<div class="header-inner-container">`
-  $tweet += `<img class="profile-pic" src=${avatars} alt="Profile Picture">`;
-  $tweet += `<span>${name}</span>`;
-  $tweet += `</div>`;
-  $tweet += `<div class="header-inner-container">`;
-  $tweet += `<span class="username">${handle}</span>`;
-  $tweet += `</div>`;
-  $tweet += `</header>`;
-  $tweet += `<p>${escape(text)}<p>`;
-  $tweet += `<hr>`;
-  $tweet += `<footer>`;
-  $tweet += `<div class="footer-inner-container">`;
-  $tweet += `<span class="footer-date">Created ${datetimeDisplay} ${datetimeUnit} ago</span>`;
-  $tweet += `</div>`;
-  $tweet +=  `<div class="footer-inner-container">`;
-  $tweet +=  `<i class="fas fa-flag footer-icon"></i>`;
-  $tweet += `<i class="fas fa-retweet footer-icon"></i>`;
-  $tweet += `<i class="fas fa-heart footer-icon"></i>`;
-  $tweet += `</div>`;
 
   return $tweet;
 };
+
+// <span class="footer-date">Created ${datetimeDisplay} ${datetimeUnit} ago</span>
 
 // Handle new tweet submission
 $("form").submit(function(event){
