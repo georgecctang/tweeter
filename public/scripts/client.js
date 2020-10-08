@@ -29,29 +29,10 @@ const escape =  function(str) {
 const createTweetElement = function(tweet) {
   let { user: { name, avatars, handle }, content: { text }, created_at } = tweet;
   
-  // Calcuate date time difference and generate correct display
-  // let diffMS = new Date() - created_at;
-  // let datetimeDisplay, datetimeUnit;
-  // if (diffMS/(1000 * 365 * 24 * 60 * 60) >= 1) {
-  //   datetimeDisplay = Math.floor(diffMS/(1000 * 365 * 24 * 60 * 60));
-  //   datetimeUnit = datetimeDisplay > 1 ? 'years' : 'year';
-  // } else if (diffMS/(1000 * 24 * 60 * 60) >= 1) {
-  //   datetimeDisplay = Math.floor(diffMS/(1000 * 24 * 60 * 60));
-  //   datetimeUnit = datetimeDisplay > 1 ? 'days' : 'day';
-  // } else if (diffMS/(1000 * 60 * 60) >= 1) {
-  //   datetimeDisplay = Math.floor(diffMS/(1000 * 60 * 60));
-  //   datetimeUnit = datetimeDisplay > 1 ? 'hours' : 'hour';
-  // } else if (diffMS/(1000 * 60) >= 1) {
-  //   datetimeDisplay = Math.floor(diffMS/(1000 * 60));
-  //   datetimeUnit = datetimeDisplay > 1 ? 'minutes' : 'minute';
-  // } else {
-  //   datetimeDisplay = Math.floor(diffMS/(1000));
-  //   datetimeUnit = datetimeDisplay > 1? 'seconds' : 'seconds';
-  // }
-
-  // create $tweet element
- 
+  // Get the tweet post info with external function 
   let datetimeInfo = calculateTimeAgo(created_at);
+ 
+  // create $tweet element
 
   let $tweet = 
   `

@@ -8,6 +8,9 @@
   if (diffMS/(1000 * 365 * 24 * 60 * 60) >= 1) {
     datetimeDisplay = Math.floor(diffMS/(1000 * 365 * 24 * 60 * 60));
     datetimeUnit = datetimeDisplay > 1 ? 'years' : 'year';
+  } else if (diffMS/(1000 * 7 * 24 * 60 * 60) >= 1) {
+    datetimeDisplay = Math.floor(diffMS/(1000 * 7 * 24 * 60 * 60));
+    datetimeUnit = datetimeDisplay > 1 ? 'weeks' : 'week';
   } else if (diffMS/(1000 * 24 * 60 * 60) >= 1) {
     datetimeDisplay = Math.floor(diffMS/(1000 * 24 * 60 * 60));
     datetimeUnit = datetimeDisplay > 1 ? 'days' : 'day';
