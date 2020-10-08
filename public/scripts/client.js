@@ -35,7 +35,7 @@ const createTweetElement = function(tweet) {
   let { user: { name, avatars, handle }, content: { text }, created_at } = tweet;
   
   // Get the tweet post info with external function 
-  let datetimeInfo = calculateTimeAgo(created_at);
+  // let datetimeInfo = calculateTimeAgo(created_at);
  
   // create $tweet element
 
@@ -55,7 +55,7 @@ const createTweetElement = function(tweet) {
       <hr>
       <footer>
         <div class="footer-inner-container">
-        <span class="footer-date">Created ${datetimeInfo[0]} ${datetimeInfo[1]} ago</span>
+        <span class="footer-date">Created ${$.timeago(created_at)}</span>
       </div>
       <div class="footer-inner-container">
         <i class="fas fa-flag footer-icon"></i>
@@ -106,8 +106,7 @@ $("form").submit(function(event){
 		method: "POST",
 		data : form_data
   }).done(fetchTweets)
-  .done(this.reset())
-  done();
+  .done(this.reset());
 });
 
 // Fetch tweet data from server
