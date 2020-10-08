@@ -7,6 +7,11 @@
 // import * as timeago from 'timeago.js';
 
 // Populate #tweet-container with tweet data
+
+// variable to show variable
+let isErrorDisplaying = false; 
+
+
 const renderTweets = function(tweets) {
 
   // Empty container first
@@ -62,29 +67,32 @@ const createTweetElement = function(tweet) {
   return $tweet;
 };
 
-// <span class="footer-date">Created ${datetimeDisplay} ${datetimeUnit} ago</span>
+// Display error message for empty or too long tweet input
+
+const displayErrorMessage = function(type) {
+  // type will be 0 (empty tweet) or 1 (tweet length > 140)
+  $("#error-container").addClass("error-container");
+  if (type === 0) {  
+    $("#error-container").html("<strong>&#9888; Please enter some text. &#9888;</strong>");
+  } else {
+    $("#error-container").html("<strong>&#9888; Too long. Plz rspct our arbitary limit of 140 chars. #kthxbye &#9888;</strong>");
+  }
+  $("#error-container").slideDown('slow');
+  isErrorDisplaying = true;
+}
 
 // Handle new tweet submission
 $("form").submit(function(event){
 
-  // form validation
+  // Form Validation
   // Empty string
   if (!this.text.value) {
-    console.log('empty entry');
-    // alert("Empty");
-
-    $("#error-container").addClass("error-container");
-    $("#error-container").html("&#9888; Please enter some text. &#9888;");
-    $("#error-container").slideDown('slow').delay(3000).slideUp('slow');
+    displayErrorMessage(0);
     return false;
   } 
   // string longer than 140 chars
   if (this.text.value.length > 140) {
-    // alert("Limit is 140; please shorten your text.");
-    $("#error-container").addClass("error-container");
-    $("#error-container").html("&#9888; Too long. Plz rspct our arbitary limit of 140 chars. #kthxbye &#9888;");
-    $("#error-container").slideDown('slow').delay(3000).slideUp('slow');
-
+    displayErrorMessage(1);
     return false;
   }
   // prevent default action
@@ -102,6 +110,7 @@ $("form").submit(function(event){
   done();
 });
 
+// Fetch tweet data from server
 const fetchTweets = function() {
   $.ajax({
     url: "/tweets",
@@ -112,5 +121,15 @@ const fetchTweets = function() {
 // Fetch data on load
 $("document").ready(() => {
   fetchTweets();
-  $("#error-container").slideUp();
+  $("#error-container").hide();
+});
+
+// Hide message if the tweeter input is within the allowed length
+$("form").on("keyup", function() {
+  if (isErrorDisplaying) {
+    if (this.text.value.length > 0 && this.text.value.length <= 140) {
+      $("#error-container").slideUp();
+      isErrorDisplaying = false;
+    }
+  }
 });
