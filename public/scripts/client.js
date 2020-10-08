@@ -51,7 +51,7 @@ const createTweetElement = function(tweet) {
           <span class="username">${handle}</span>
         </div>
       </header>
-      <p>${escape(text)}<p>
+      <p>${escape(text)}</p>
       <hr>
       <footer>
         <div class="footer-inner-container">
@@ -63,7 +63,7 @@ const createTweetElement = function(tweet) {
         <i class="fas fa-heart footer-icon"></i>
       </div>
   `;
-
+//       <p>${text}<p>
   return $tweet;
 };
 

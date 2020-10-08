@@ -13,7 +13,6 @@
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #545149;
-  /* font-family: 'Source Sans Pro', sans-serif; */
   outline: 0;
   resize: none;
   height: 3em;
@@ -31,6 +30,7 @@
 .new-tweet button {
   background-color: #4056A1;  
   color: #FFFFFF;
+  outline: none;
   border: none;
   border-radius: 3px;
 }

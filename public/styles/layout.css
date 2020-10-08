@@ -19,12 +19,15 @@ body {
   color: #545149;
   /* color: pink; */
   background-color: #f4f1ec;
+  background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   flex-flow: column;
   align-items: center;
   margin-top: 120px;
+
 }
 
 
@@ -36,3 +39,15 @@ body {
   width: 90%;
   /* border: 2px red dashed; */
  }
+
+ @media only screen and (min-width: 768px) {
+   body {
+    flex-flow: row wrap;
+    align-items: flex-start;
+   }
+
+   .main-container {
+     width: 60%;
+     padding: 2.5%;
+   }
+ } 

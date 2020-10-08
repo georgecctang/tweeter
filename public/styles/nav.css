@@ -3,7 +3,7 @@ nav {
   box-sizing: border-box;
   height: 120px;
   width: 100%;
-  background-color: #4056A1;  
+  background-color:  #FD9A24;  
   color: #FFFFFF;
   padding: 1.5em;
   position: fixed;
@@ -13,4 +13,11 @@ nav {
 
 nav span {
   font-family: 'Bungee', cursive, sans-serif;
+}
+
+@media only screen and (min-width: 768px) {
+  nav {
+    background: #4056A1;
+  }
+
 }

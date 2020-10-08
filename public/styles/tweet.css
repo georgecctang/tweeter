@@ -2,7 +2,7 @@
 
 article.tweet {
   box-sizing: border-box;
-  height: 300px;
+  height: auto;
   width: 100%;
   border: 2px solid #545149;
   margin-top: 40px;
@@ -45,8 +45,8 @@ article.tweet:hover .username {
 
 /* tweet text and hr */ 
 article.tweet p {
-  text-align: justify;
   padding: 10px 10px;
+  min-height: 50px;
 }
 
 hr {

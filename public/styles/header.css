@@ -5,6 +5,12 @@ body > header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f0f6ff;
-  background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+  background-color: #FD9A24;
+}
+
+@media only screen and (min-width: 768px) {
+  body > header {
+    width: 30%;
+    margin: 75px 2.5%;
+  }
 }
