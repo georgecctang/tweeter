@@ -84,12 +84,21 @@ $("form").submit(function(event){
   // form validation
   // Empty string
   if (!this.text.value) {
-    alert("Please enter some text."); 
+    console.log('empty entry');
+    // alert("Empty");
+
+    $("#error-container").addClass("error-container");
+    $("#error-container").html("&#9888; Please enter some text. &#9888;");
+    $("#error-container").slideDown('slow').delay(3000).slideUp('slow');
     return false;
   } 
   // string longer than 140 chars
   if (this.text.value.length > 140) {
-    alert("Limit is 140; please shorten your text.");
+    // alert("Limit is 140; please shorten your text.");
+    $("#error-container").addClass("error-container");
+    $("#error-container").html("&#9888; Too long. Plz rspct our arbitary limit of 140 chars. #kthxbye &#9888;");
+    $("#error-container").slideDown('slow').delay(3000).slideUp('slow');
+
     return false;
   }
   // prevent default action
@@ -103,7 +112,8 @@ $("form").submit(function(event){
 		method: "POST",
 		data : form_data
   }).done(fetchTweets)
-  .done(this.reset());
+  .done(this.reset())
+  done();
 });
 
 const fetchTweets = function() {
@@ -114,4 +124,7 @@ const fetchTweets = function() {
 };
 
 // Fetch data on load
-$("document").ready(fetchTweets);
+$("document").ready(() => {
+  fetchTweets();
+  $("#error-container").slideUp();
+});

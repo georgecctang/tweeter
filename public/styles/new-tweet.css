@@ -1,7 +1,7 @@
 .new-tweet {
   display: flex;
   flex-direction: column;
-  justify-content: space-bewteen;
+  justify-content: space-between;
 }
 
 .new-tweet form {
