@@ -8,9 +8,8 @@
 
 // Populate #tweet-container with tweet data
 
-// variable to show variable
+// variable to show if the error message is currently displayed 
 let isErrorDisplaying = false; 
-
 
 const renderTweets = function(tweets) {
 
@@ -73,9 +72,9 @@ const displayErrorMessage = function(type) {
   // type will be 0 (empty tweet) or 1 (tweet length > 140)
   $("#error-container").addClass("error-container");
   if (type === 0) {  
-    $("#error-container").html("<strong>&#9888; Please enter some text. &#9888;</strong>");
+    $("#error-container").html("<strong>&#9888;Please enter some text.</strong>");
   } else {
-    $("#error-container").html("<strong>&#9888; Too long. Plz rspct our arbitary limit of 140 chars. #kthxbye &#9888;</strong>");
+    $("#error-container").html("<strong>&#9888;Too long. Plz rspct our arbitary limit of 140 chars. #kthxbye</strong>");
   }
   $("#error-container").slideDown('slow');
   isErrorDisplaying = true;
@@ -121,7 +120,36 @@ const fetchTweets = function() {
 $("document").ready(() => {
   fetchTweets();
   $("#error-container").hide();
+  $(".new-tweet").hide();
+
+  $(".go-to-form-button").hide();
+
+  $(window).scroll(function() {
+    console.log()
+    if($(window).scrollTop() >= 300) {
+      $(".go-to-form-button").show();
+      $(".show-form-container").hide();
+    } else {
+      $(".go-to-form-button").hide();   
+      $(".show-form-container").show(); 
+    }
+  });
+
+  $(".go-to-form-button").click(function() {
+    $(".new-tweet").slideDown('slow');
+    $('html, body').animate({scrollTop: $(".new-tweet").offset().top - 200}, 300);
+    $(".new-tweet textarea").focus();
+    $(this).hide();
+    $("show-form-container").show();
+
+  });
 });
+
+// Show Tweet Form on Click
+$(".show-form-button").click(function() {
+  $(".new-tweet").slideDown('slow');
+  $(".new-tweet textarea").focus();
+})
 
 // Hide message if the tweeter input is within the allowed length
 $("form").on("keyup", function() {

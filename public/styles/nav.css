@@ -1,6 +1,7 @@
 nav {
-  display: block;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  /* box-sizing: border-box; */
   height: 120px;
   width: 100%;
   background-color:  #FD9A24;  
@@ -11,8 +12,31 @@ nav {
   z-index: 2;
 }
 
-nav span {
+nav .nav-title {
   font-family: 'Bungee', cursive, sans-serif;
+}
+
+nav .show-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes up-down {
+  0% {transform: translateY(2px);}
+  50% {transform: translateY(10px);}
+  100% {transform: translateY(2px);}
+}
+
+
+nav .show-form-button {
+  font-size: 1em;
+  color: red;
+  animation: up-down 2s infinite;
+}
+
+nav .show-form-button:hover {
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
