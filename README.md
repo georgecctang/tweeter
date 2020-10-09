@@ -3,8 +3,8 @@
 This project is a simple AJAX-based Twitter clone that uses jQuery, HTML5 and CSS3.
 
 ## Final Product
-!["Screenshot of homepage"](./docs/index.png)
 First, click on the icon on the right side of the navigation bar. It will open the tweet box.
+!["Screenshot of homepage"](./docs/index.png)
 
 Type in your tweet message, and press the TWEET button. There is a 140-character limit; the number of remaining characters is shown on the bottom right.
 !["Screenshot of tweet box"](./docs/tweet-box.png)
