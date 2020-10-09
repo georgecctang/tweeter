@@ -41,7 +41,7 @@ $(document).ready(function() {
   // Scroll to top when clicked on go-to-form button (in bottom right of screen)
   $(".go-to-form-button").click(function() {
     $(".new-tweet").slideDown('fast');
-    $('html, body').animate({scrollTop: $(".new-tweet").offset().top - 200}, 300);
+    $('html, body').animate({scrollTop: $(".new-tweet").offset().top - 250}, 300);
     $(".new-tweet textarea").focus();
     $(this).hide();
     $("show-form-container").show();
