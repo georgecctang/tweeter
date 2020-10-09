@@ -7,7 +7,11 @@ body > header {
   justify-content: center;
   align-items: center;
   background-color: #FD9A24;
+  background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+
 }
+
+/* Media Query for landscape tablets (768px or higher) */
 
 @media only screen and (min-width: 768px) {
   body > header {

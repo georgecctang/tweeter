@@ -17,9 +17,7 @@ html {
 
 body {
   color: #545149;
-  /* color: pink; */
   background-color: #f4f1ec;
-  background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
@@ -29,33 +27,33 @@ body {
 }
 
 
-.go-to-form-button {
-  height: 80px;
-  width: 80px;
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-}
-
-
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- .main-container {
-  box-sizing: border-box;
-  width: 90%;
-  /* border: 2px red dashed; */
- }
+.main-container {
+box-sizing: border-box;
+width: 90%;
+}
 
- @media only screen and (min-width: 768px) {
-   body {
-    flex-flow: row wrap;
-    align-items: flex-start;
-   }
+.go-to-form-button {
+height: 80px;
+width: 80px;
+position: fixed;
+bottom: 20px;
+right: 30px;
+}
 
-   .main-container {
-     width: 50%;
-     margin: 0 5%;
-   }
- } 
+/* Media Query for landscape tablets (768px or higher) */
+@media only screen and (min-width: 768px) {
+  body {
+  flex-flow: row wrap;
+  align-items: flex-start;
+
+  }
+
+  .main-container {
+    width: 50%;
+    margin: 0 5%;
+  }
+} 

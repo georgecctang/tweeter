@@ -28,16 +28,16 @@ nav .show-form-container {
   100% {transform: translateY(2px);}
 }
 
-
 nav .show-form-button {
   font-size: 1em;
-  color: red;
   animation: up-down 2s infinite;
 }
 
 nav .show-form-button:hover {
   cursor: pointer;
 }
+
+/* Media Query for landscape tablets (768px or higher) */
 
 @media only screen and (min-width: 768px) {
   nav {
